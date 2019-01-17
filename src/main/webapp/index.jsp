@@ -9,7 +9,7 @@
 
 <hr>
 
-<a href="test/hello">Hello</a>
+<a href="api/categories">Get a List of Categories</a>
 
 </body>
 </html>
