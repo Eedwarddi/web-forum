@@ -28,7 +28,7 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
 @ComponentScan("forum")
 @PropertySources({
 	@PropertySource("classpath:persistence-mysql.properties"),
-	@PropertySource("classpath:env2.properties")
+	@PropertySource("classpath:connectionpool_hibernate.properties")
 })
 public class ForumConfig implements WebMvcConfigurer {
 
