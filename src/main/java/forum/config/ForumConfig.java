@@ -1,11 +1,18 @@
 package forum.config;
 
+import java.beans.PropertyVetoException;
+import java.util.Properties;
+import java.util.logging.Logger;
+
+import javax.sql.DataSource;
+
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.PropertySources;
 import org.springframework.core.env.Environment;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
@@ -15,17 +22,14 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
-import java.beans.PropertyVetoException;
-import java.util.Properties;
-import java.util.logging.Logger;
-
-import javax.sql.DataSource;
-
 @Configuration
 @EnableWebMvc
 @EnableTransactionManagement
 @ComponentScan("forum")
-@PropertySource({ "classpath:persistence-mysql.properties" })
+@PropertySources({
+	@PropertySource("classpath:persistence-mysql.properties"),
+	@PropertySource("classpath:env2.properties")
+})
 public class ForumConfig implements WebMvcConfigurer {
 
 	@Autowired

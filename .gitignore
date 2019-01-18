@@ -26,3 +26,6 @@ hs_err_pid*
 ### Java-Web ###
 ## ignoring target file
 target/
+
+## Properties File
+persistence-mysql.properties
