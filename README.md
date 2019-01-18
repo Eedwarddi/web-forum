@@ -12,8 +12,13 @@ template for persistence-mysql.properties
 #
 # JDBC connection properties
 #
+# Your MySQL url. example: jdbc.url=jdbc:mysql://localhost:3306/forumdb
 jdbc.url=
+
+# Your MySQL user. example: jdbc.user=username
 jdbc.user=
+
+#Your MySQL password. Example: jdbc.password=password123
 jdbc.password=
 
 ```
