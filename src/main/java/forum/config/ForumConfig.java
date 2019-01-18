@@ -48,7 +48,7 @@ public class ForumConfig implements WebMvcConfigurer {
 			throw new RuntimeException(exc);
 		}
 
-		myDataSource.setJdbcUrl(env.getProperty("jdbc.url"));
+		myDataSource.setJdbcUrl(env.getProperty("jdbc.url") + "?useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
 		myDataSource.setUser(env.getProperty("jdbc.user"));
 		myDataSource.setPassword(env.getProperty("jdbc.password"));
 
