@@ -11,14 +11,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import forum.entity.Category;
-import forum.service.ForumService;
+import forum.service.CategoryService;
 
 @RestController
 @RequestMapping("/api")
 public class CategoryRestController {
 	
 	@Autowired
-	private ForumService forumService;
+	private CategoryService forumService;
 	
 	private List<Category> categories;
 	

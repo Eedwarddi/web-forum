@@ -10,7 +10,7 @@ import forum.dao.CategoryDAO;
 import forum.entity.Category;
 
 @Service
-public class ForumServiceImpl implements ForumService {
+public class CategoryServiceImpl implements CategoryService {
 
 	@Autowired
 	private CategoryDAO categoryDAO;
