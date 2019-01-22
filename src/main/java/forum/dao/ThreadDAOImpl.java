@@ -37,4 +37,18 @@ public class ThreadDAOImpl implements ThreadDAO {
 		return threads;
 	}
 
+	@Override
+	public List<Thread> getThreadsByCategory(int categoryId) {
+		
+		Session currentSession = sessionFactory.getCurrentSession();
+		
+		Query<Thread> theQuery = currentSession.createQuery("from Thread where category_id=:categoryId", Thread.class);
+		
+		theQuery.setParameter("categoryId", categoryId);
+		
+		List<Thread> threads = theQuery.getResultList();
+		
+		return threads;
+	}
+
 }

@@ -28,4 +28,10 @@ public class ThreadServiceImpl implements ThreadService {
 		return threadDAO.getThreads();
 	}
 
+	@Override
+	@Transactional
+	public List<Thread> getThreadsByCategory(int categoryId) {
+		return threadDAO.getThreadsByCategory(categoryId);
+	}
+
 }

@@ -9,5 +9,7 @@ public interface ThreadDAO {
 	public void saveThread(Thread thread);
 
 	public List<Thread> getThreads();
+	
+	public List<Thread> getThreadsByCategory(int categoryId);
 
 }
