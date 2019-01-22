@@ -16,34 +16,33 @@ import forum.service.CategoryService;
 @RestController
 @RequestMapping("/api")
 public class CategoryRestController {
-	
+
 	@Autowired
-	private CategoryService forumService;
-	
+	private CategoryService categoryService;
+
 	private List<Category> categories;
-	
+
 	@PostConstruct
 	public void loadData() {
-		
-		categories = forumService.getCategories();
+			categories = categoryService.getCategories();
 	}
-	
+
 	@GetMapping("/categories")
 	public List<Category> getCategories() {
 		return categories;
 	}
-	
+
 	@GetMapping("/categories/{categoryId}")
 	public Category getCategory(@PathVariable int categoryId) {
-		
-		Category category = forumService.getCategory(categoryId);
-		
-		if(category == null) {
+
+		Category category = categoryService.getCategory(categoryId);
+
+		if (category == null) {
 			throw new ForumItemNotFoundException("Category id not found - " + categoryId);
 		}
-		
+
 		return category;
-		
+
 	}
 
 }

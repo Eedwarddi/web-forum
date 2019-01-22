@@ -11,7 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "thread")
+@Table(name="thread")
 public class Thread {
 
 	@Id
@@ -21,7 +21,11 @@ public class Thread {
 
 	@Column(name = "title")
 	private String title;
-
+	
+	@Column(name="content")
+	private String content;
+	
+	
 	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE,
 							CascadeType.DETACH, CascadeType.REFRESH })
 	@JoinColumn(name = "category_id")
@@ -31,10 +35,9 @@ public class Thread {
 		
 	}
 
-	public Thread(int id, String title, Category category) {
+	public Thread(int id, String title) {
 		this.id = id;
 		this.title = title;
-		this.category = category;
 	}
 
 	public int getId() {
@@ -52,6 +55,15 @@ public class Thread {
 	public void setTitle(String title) {
 		this.title = title;
 	}
+	
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
 
 	public Category getCategory() {
 		return category;
@@ -60,6 +72,7 @@ public class Thread {
 	public void setCategory(Category category) {
 		this.category = category;
 	}
+	
 
 	@Override
 	public String toString() {
