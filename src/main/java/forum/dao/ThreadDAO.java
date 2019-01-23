@@ -8,6 +8,6 @@ public interface ThreadDAO {
 	
 	public void saveThread(Thread thread);
 
-	public List<Thread> getThreads();
+	//public List<Thread> getThreads();
 
 }

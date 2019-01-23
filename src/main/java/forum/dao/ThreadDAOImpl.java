@@ -24,6 +24,8 @@ public class ThreadDAOImpl implements ThreadDAO {
 		currentSession.saveOrUpdate(thread);
 		
 	}
+	
+	/*
 
 	@Override
 	public List<Thread> getThreads() {
@@ -36,5 +38,6 @@ public class ThreadDAOImpl implements ThreadDAO {
 		
 		return threads;
 	}
+	*/
 
 }

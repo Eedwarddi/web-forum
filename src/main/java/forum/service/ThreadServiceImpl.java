@@ -28,12 +28,14 @@ public class ThreadServiceImpl implements ThreadService {
 		
 		return thread;
 	}
-
+	
+	/*
 	@Override
 	@Transactional
 	public List<Thread> getThreads() {
 		
 		return threadDAO.getThreads();
 	}
+	*/
 
 }
