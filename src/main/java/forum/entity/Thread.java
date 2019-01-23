@@ -35,9 +35,10 @@ public class Thread {
 		
 	}
 
-	public Thread(int id, String title) {
+	public Thread(int id, String title, String content) {
 		this.id = id;
 		this.title = title;
+		this.content = content;
 	}
 
 	public int getId() {

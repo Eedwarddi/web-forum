@@ -1,16 +1,10 @@
 package forum.entity;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -25,12 +19,6 @@ public class Category {
 	@Column(name="title")
 	private String title;
 	
-	/*
-	@OneToMany(fetch=FetchType.EAGER, mappedBy="category",
-				cascade= {CascadeType.PERSIST, CascadeType.MERGE,
-				CascadeType.DETACH, CascadeType.REFRESH})
-	private List<Thread> threads;
-	*/
 	public Category() {
 		
 	}
@@ -56,25 +44,6 @@ public class Category {
 		this.title = title;
 	}
 	
-	/*
-	public List<Thread> getThreads() {
-		return threads;
-	}
-
-	public void setThreads(List<Thread> threads) {
-		this.threads = threads;
-	}
-	
-	public void addThread(Thread thread) {
-		
-		if (threads ==null) {
-			threads = new ArrayList<>();
-		}
-		threads.add(thread);
-	}
-	*/
-	
-
 	@Override
 	public String toString() {
 		return "Category [id=" + id + ", title=" + title + "]";
