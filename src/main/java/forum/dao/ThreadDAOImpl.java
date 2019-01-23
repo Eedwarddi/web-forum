@@ -25,19 +25,4 @@ public class ThreadDAOImpl implements ThreadDAO {
 		
 	}
 	
-	/*
-
-	@Override
-	public List<Thread> getThreads() {
-		
-		Session currentSession = sessionFactory.getCurrentSession();
-		
-		Query<Thread> theQuery = currentSession.createQuery("from Thread", Thread.class);
-		
-		List<Thread> threads = theQuery.getResultList();
-		
-		return threads;
-	}
-	*/
-
 }
