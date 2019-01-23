@@ -21,17 +21,12 @@ public class ThreadRestController {
 	@Autowired
 	private ThreadService threadService;
 
-	@Autowired
-	private CategoryRestController categoryController;
-
 	@PostMapping("/threads")
 	public Thread addThread(@RequestBody Thread theThread) {
 
 		theThread.setId(0);
 
 		threadService.saveThread(theThread);
-
-		theThread.setCategory(categoryController.getCategory(theThread.getCategory().getId()));
 
 		return theThread;
 	}

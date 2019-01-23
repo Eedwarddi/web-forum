@@ -8,6 +8,6 @@ public interface ThreadService {
 	
 	public List<Thread> getThreads();
 	
-	public void saveThread(Thread thread);
+	public Thread saveThread(Thread thread);
 
 }

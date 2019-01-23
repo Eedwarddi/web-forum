@@ -8,17 +8,25 @@ import org.springframework.transaction.annotation.Transactional;
 
 import forum.dao.ThreadDAO;
 import forum.entity.Thread;
+import forum.rest.CategoryRestController;
 
 @Service
 public class ThreadServiceImpl implements ThreadService {
 	
 	@Autowired
 	private ThreadDAO threadDAO;
+	
+	@Autowired
+	private CategoryRestController categoryController;
 
 	@Override
 	@Transactional
-	public void saveThread(Thread thread) {
+	public Thread saveThread(Thread thread) {
 		threadDAO.saveThread(thread);
+		
+		thread.setCategory(categoryController.getCategory(thread.getCategory().getId()));
+		
+		return thread;
 	}
 
 	@Override
