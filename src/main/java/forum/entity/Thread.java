@@ -16,10 +16,10 @@ public class Thread {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
+	@Column(name="id")
 	private int id;
 
-	@Column(name = "title")
+	@Column(name="title")
 	private String title;
 	
 	@Column(name="content")
@@ -28,7 +28,7 @@ public class Thread {
 	
 	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE,
 							CascadeType.DETACH, CascadeType.REFRESH })
-	@JoinColumn(name = "category_id")
+	@JoinColumn(name="category_id")
 	private Category category;
 	
 	public Thread() {
@@ -49,27 +49,35 @@ public class Thread {
 		this.id = id;
 	}
 
+
 	public String getTitle() {
 		return title;
 	}
-
+	
+	/*
+	 * Not sure yet if I should remove this
+	 * 
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	
-
+	*/
 	public String getContent() {
 		return content;
 	}
-
+	
+	
+	/*
+	 * Not sure yet if I should remove this
+	 * 
 	public void setContent(String content) {
 		this.content = content;
 	}
-
+	*/
+	
 	public Category getCategory() {
 		return category;
 	}
-
+	
 	public void setCategory(Category category) {
 		this.category = category;
 	}
@@ -80,6 +88,4 @@ public class Thread {
 		return "Thread [id=" + id + ", title=" + title + ", category=" + category + "]";
 	}
 	
-	
-
 }
