@@ -1,16 +1,11 @@
 package forum.rest;
 
-import java.util.List;
-
-import javax.annotation.PostConstruct;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import forum.entity.Category;
 import forum.entity.Thread;
 import forum.service.ThreadService;
 
@@ -24,11 +19,9 @@ public class ThreadRestController {
 	@PostMapping("/threads")
 	public Thread addThread(@RequestBody Thread theThread) {
 
-		theThread.setId(0);
+		Thread savedThread = threadService.saveThread(theThread);
 
-		threadService.saveThread(theThread);
-
-		return theThread;
+		return savedThread;
 	}
 
 }
