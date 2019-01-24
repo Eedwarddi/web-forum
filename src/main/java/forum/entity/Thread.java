@@ -27,8 +27,7 @@ public class Thread {
 	private String content;
 	
 	
-	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE,
-							CascadeType.DETACH, CascadeType.REFRESH })
+	@ManyToOne
 	@JoinColumn(name="category_id")
 	private Category category;
 	

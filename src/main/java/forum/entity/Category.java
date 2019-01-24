@@ -25,9 +25,7 @@ public class Category {
 	@Column(name="title")
 	private String title;
 	
-	@OneToMany(mappedBy="category",
-			cascade= {CascadeType.PERSIST, CascadeType.MERGE,
-					CascadeType.DETACH, CascadeType.REFRESH})
+	@OneToMany(mappedBy="category")
 	private List<Thread> threads;
 	
 	public Category() {
