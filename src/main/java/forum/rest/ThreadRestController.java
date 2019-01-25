@@ -1,5 +1,7 @@
 package forum.rest;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,7 +19,7 @@ public class ThreadRestController {
 	private ThreadService threadService;
 
 	@PostMapping("/threads")
-	public Thread addThread(@RequestBody Thread theThread) {
+	public Thread addThread(@Valid @RequestBody Thread theThread) {
 
 		Thread savedThread = threadService.saveThread(theThread);
 
