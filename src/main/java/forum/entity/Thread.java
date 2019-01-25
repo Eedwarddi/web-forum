@@ -56,25 +56,9 @@ public class Thread {
 		return title;
 	}
 	
-	/*
-	 * Not sure yet if I should remove this
-	 * 
-	public void setTitle(String title) {
-		this.title = title;
-	}
-	*/
 	public String getContent() {
 		return content;
 	}
-	
-	
-	/*
-	 * Not sure yet if I should remove this
-	 * 
-	public void setContent(String content) {
-		this.content = content;
-	}
-	*/
 	
 	public Category getCategory() {
 		return category;

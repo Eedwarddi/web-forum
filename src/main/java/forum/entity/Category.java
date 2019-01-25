@@ -3,7 +3,6 @@ package forum.entity;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -47,10 +46,6 @@ public class Category {
 	
 	public String getTitle() {
 		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
 	}
 	
 	@Override
