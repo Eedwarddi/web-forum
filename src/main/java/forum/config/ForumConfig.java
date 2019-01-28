@@ -2,7 +2,6 @@ package forum.config;
 
 import java.beans.PropertyVetoException;
 import java.util.Properties;
-import java.util.logging.Logger;
 
 import javax.sql.DataSource;
 
@@ -34,8 +33,6 @@ public class ForumConfig implements WebMvcConfigurer {
 
 	@Autowired
 	private Environment env;
-
-	private Logger logger = Logger.getLogger(getClass().getName());
 
 	@Bean
 	public DataSource myDataSource() {

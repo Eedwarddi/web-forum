@@ -2,9 +2,13 @@ package forum.dao;
 
 import java.util.List;
 
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -22,12 +26,17 @@ public class CategoryDAOImpl implements CategoryDAO {
 		
 		Session currentSession = sessionFactory.getCurrentSession();
 		
-		Query<Category> theQuery =
-				currentSession.createQuery("from Category", Category.class);
+		CriteriaBuilder cb = currentSession.getCriteriaBuilder();
 		
-		List<Category> categories = theQuery.getResultList();
+		CriteriaQuery<Category> cq = cb.createQuery(Category.class);
+		
+		Root<Category> rootEntry = cq.from(Category.class);
+		
+		CriteriaQuery<Category> all = cq.select(rootEntry);
+		
+		TypedQuery<Category> allQuery = currentSession.createQuery(all);
 
-		return categories;
+		return allQuery.getResultList();
 	}
 
 
