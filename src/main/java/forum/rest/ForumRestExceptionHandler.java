@@ -29,7 +29,5 @@ public class ForumRestExceptionHandler {
 		
 		return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
 	}
-	
-	
 
 }

@@ -1,6 +1,10 @@
 package forum.rest;
 
+<<<<<<< HEAD
 import java.util.List;
+=======
+import javax.validation.Valid;
+>>>>>>> master
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,19 +24,12 @@ public class ThreadRestController {
 	@Autowired
 	private ThreadService threadService;
 
-	@Autowired
-	private CategoryRestController categoryController;
-
 	@PostMapping("/threads")
-	public Thread addThread(@RequestBody Thread theThread) {
+	public Thread addThread(@Valid @RequestBody Thread theThread) {
 
-		theThread.setId(0);
+		Thread savedThread = threadService.saveThread(theThread);
 
-		threadService.saveThread(theThread);
-
-		theThread.setCategory(categoryController.getCategory(theThread.getCategory().getId()));
-
-		return theThread;
+		return savedThread;
 	}
 	
 	@GetMapping("/categories/{categoryId}/threads")
