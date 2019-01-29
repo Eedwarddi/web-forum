@@ -1,10 +1,10 @@
 package forum.rest;
 
-<<<<<<< HEAD
+
 import java.util.List;
-=======
+
 import javax.validation.Valid;
->>>>>>> master
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

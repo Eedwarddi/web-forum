@@ -1,5 +1,7 @@
 package forum.service;
 
+import java.util.List;
+
 import forum.entity.Thread;
 
 public interface ThreadService {

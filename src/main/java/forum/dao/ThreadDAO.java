@@ -1,5 +1,7 @@
 package forum.dao;
 
+import java.util.List;
+
 import forum.entity.Thread;
 
 public interface ThreadDAO {

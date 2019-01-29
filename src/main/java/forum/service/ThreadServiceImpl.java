@@ -1,5 +1,7 @@
 package forum.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -32,7 +34,6 @@ public class ThreadServiceImpl implements ThreadService {
 		
 		return savedThread;
 	}
-<<<<<<< HEAD
 
 	@Override
 	@Transactional
@@ -40,7 +41,4 @@ public class ThreadServiceImpl implements ThreadService {
 		return threadDAO.getThreadsByCategory(categoryId);
 	}
 
-=======
-	
->>>>>>> master
 }
