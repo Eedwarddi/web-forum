@@ -1,7 +1,10 @@
 package forum.dao;
 
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -33,5 +36,20 @@ public class ThreadDAOImpl implements ThreadDAO {
 		
 		return thread;
 	}
-	
-}
+
+
+	@Override
+	public List<Thread> getThreadsByCategory(int categoryId) {
+		
+		Session currentSession = sessionFactory.getCurrentSession();
+		
+		Query<Thread> theQuery = currentSession.createQuery("from Thread where category_id=:categoryId", Thread.class);
+		
+		theQuery.setParameter("categoryId", categoryId);
+		
+		List<Thread> threads = theQuery.getResultList();
+		
+		return threads;
+	}
+
+	}
