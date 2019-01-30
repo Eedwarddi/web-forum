@@ -38,6 +38,10 @@ public class ThreadServiceImpl implements ThreadService {
 	@Override
 	@Transactional
 	public List<Thread> getThreadsByCategory(int categoryId) {
+		
+		// will throw an exception if given category id cannot be found from the database
+		categoryController.getCategory(categoryId);
+		
 		return threadDAO.getThreadsByCategory(categoryId);
 	}
 
