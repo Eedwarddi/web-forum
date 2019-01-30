@@ -1,8 +1,27 @@
 version: 2
 jobs:
   build:
+    working_directory: ~/web-forum # directory where steps will run
     docker: # use the docker executor type; machine and macos executors are also supported
-      - image: circleci/node:4.8.2 # the primary container, where your job's commands are run
+      - image: circleci/openjdk:8-jdk-browsers # the primary container, where your job's commands are run
     steps:
+
       - checkout # check out the code in the project directory
-      - run: echo "hello world" # run the `echo` command
+
+      - restore_cache:
+          key: web-forum-{{ checksum "pom.xml" }}
+
+      - run: mvn dependency:go-offline
+
+      -save_cache:
+        paths:
+          - ~/-m2
+        key: web-forum-{{ checksum "pom.xml" }}
+
+      -run: mvn package
+
+      -store_test_results:
+        path: target/surefire-reports
+
+      -store_artifacts:
+        path: target/web-forum-0.0.1-SNAPSHOT.jar
