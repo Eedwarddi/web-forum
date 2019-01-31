@@ -1,8 +1,23 @@
 version: 2
 jobs:
   build:
-    docker: # use the docker executor type; machine and macos executors are also supported
-      - image: circleci/node:4.8.2 # the primary container, where your job's commands are run
+    working_directory: ~/web-forum
+    docker:
+      - image: circleci/openjdk:8-jdk-browsers
     steps:
-      - checkout # check out the code in the project directory
-      - run: echo "hello world" # run the `echo` command
+
+      - checkout
+
+      - run:
+          name: Pulling down dependencies
+          command: mvn dependency:go-offline
+
+      - run:
+          name: Creating a build
+          command: mvn package
+
+      - store_test_results:
+          path: target/surefire-reports
+
+      - store_artifacts:
+          path: target/web-forum-0.0.1-SNAPSHOT.jar
