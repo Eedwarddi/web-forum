@@ -1,6 +1,5 @@
 package forum.entity;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,8 +21,7 @@ public class Reply {
 	@Column(name = "comment")
 	private String comment;
 
-	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE,
-							CascadeType.DETACH, CascadeType.REFRESH })
+	@ManyToOne
 	@JoinColumn(name = "thread_id")
 	private Thread thread;
 	
