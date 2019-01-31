@@ -1,16 +1,20 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/web-forum # directory where steps will run
-    docker: # use the docker executor type; machine and macos executors are also supported
-      - image: circleci/openjdk:8-jdk-browsers # the primary container, where your job's commands are run
+    working_directory: ~/web-forum
+    docker:
+      - image: circleci/openjdk:8-jdk-browsers
     steps:
 
-      - checkout # check out the code in the project directory
+      - checkout
 
-      - run: mvn dependency:go-offline
+      - run:
+          name: Pulling down dependencies
+          command: mvn dependency:go-offline
 
-      - run: mvn package
+      - run:
+          name: Running tests
+          command: mvn package
 
       - store_test_results:
           path: target/surefire-reports
