@@ -13,7 +13,7 @@ jobs:
           command: mvn dependency:go-offline
 
       - run:
-          name: Running tests
+          name: Creating a build
           command: mvn package
 
       - store_test_results:

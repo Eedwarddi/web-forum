@@ -26,7 +26,7 @@ public class ThreadServiceImpl implements ThreadService {
 		
 		tempCategory.add(thread);
 		
-		int threadId = threadDAO.saveThrea(thread);
+		int threadId = threadDAO.saveThread(thread);
 		
 		Thread savedThread = threadDAO.getThread(threadId);
 		
