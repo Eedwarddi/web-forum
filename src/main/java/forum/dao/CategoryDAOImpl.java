@@ -35,13 +35,6 @@ public class CategoryDAOImpl implements CategoryDAO {
 		CriteriaQuery<Category> all = cq.select(rootEntry);
 		
 		TypedQuery<Category> allQuery = currentSession.createQuery(all);
-		
-		/*
-		Query<Category> theQuery =
-				currentSession.createQuery("from Category", Category.class);
-		
-		List<Category> categories = theQuery.getResultList();
-		*/
 
 		return allQuery.getResultList();
 	}

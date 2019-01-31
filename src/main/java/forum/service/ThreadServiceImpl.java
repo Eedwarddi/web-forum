@@ -1,12 +1,11 @@
 package forum.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import forum.dao.ThreadDAO;
+import forum.entity.Category;
 import forum.entity.Thread;
 import forum.rest.CategoryRestController;
 
@@ -22,11 +21,16 @@ public class ThreadServiceImpl implements ThreadService {
 	@Override
 	@Transactional
 	public Thread saveThread(Thread thread) {
-		threadDAO.saveThread(thread);
 		
-		thread.setCategory(categoryController.getCategory(thread.getCategory().getId()));
+		Category tempCategory = categoryController.getCategory(thread.getCategory().getId());
 		
-		return thread;
+		tempCategory.add(thread);
+		
+		int threadId = threadDAO.saveThread(thread);
+		
+		Thread savedThread = threadDAO.getThread(threadId);
+		
+		return savedThread;
 	}
 	
 }
