@@ -19,7 +19,7 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
 		
 		ForumErrorResponse error = new ForumErrorResponse(
 				HttpStatus.BAD_REQUEST.value(),
-				"ARGUMENT IS NOT VALID! ERROR MESSAGE: ",
+				"ARGUMENT IS NOT VALID!",
 				System.currentTimeMillis());
 		
 		return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
