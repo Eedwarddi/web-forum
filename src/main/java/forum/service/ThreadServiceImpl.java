@@ -18,13 +18,13 @@ public class ThreadServiceImpl implements ThreadService {
 	private ThreadDAO threadDAO;
 	
 	@Autowired
-	private CategoryRestController categoryController;
+	private CategoryService categoryService;
 
 	@Override
 	@Transactional
 	public Thread saveThread(Thread thread) {
 		
-		Category tempCategory = categoryController.getCategory(thread.getCategory().getId());
+		Category tempCategory = categoryService.getCategory(thread.getCategory().getId());
 		
 		tempCategory.add(thread);
 		
@@ -40,6 +40,11 @@ public class ThreadServiceImpl implements ThreadService {
 	public List<Thread> getThreadsByCategory(int categoryId) {
 		
 		return threadDAO.getThreadsByCategory(categoryId);
+	}
+
+	@Override
+	public Thread getThread(int id) {
+		return threadDAO.getThread(id);
 	}
 
 }
