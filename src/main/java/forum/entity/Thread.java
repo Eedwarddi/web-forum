@@ -31,7 +31,6 @@ public class Thread {
 	@Column(name = "content")
 	private String content;
 
-	@NotNull
 	@ManyToOne
 	@JoinColumn(name = "category_id")
 	private Category category;

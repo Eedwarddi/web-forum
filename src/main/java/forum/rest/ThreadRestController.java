@@ -29,9 +29,13 @@ public class ThreadRestController {
 	@Autowired
 	private CategoryService categoryService;
 
-	@PostMapping("/threads")
-	public Thread addThread(@Valid @RequestBody Thread theThread) {
-
+	@PostMapping("categories/{categoryId}/threads")
+	public Thread addThread(@Valid @RequestBody Thread theThread, @PathVariable int categoryId) {
+		
+		theThread.setCategory(new Category());
+		
+		theThread.getCategory().setId(categoryId);
+		
 		Thread savedThread = threadService.saveThread(theThread);
 
 		return savedThread;

@@ -54,9 +54,9 @@ Server returns:
 
 **POST thread**
 
-Endpoint: `/threads`
+Endpoint: `categories/{categoryId}/threads`
 
-Example URL: `http://localhost:8080/web-forum/api/threads`
+Example URL: `http://localhost:8080/web-forum/api/categories/3/threads`
 
 Example body of the call:
 
@@ -64,9 +64,6 @@ Example body of the call:
 {
 	"title" : "This a title for a thread",
 	"content" : "Content of the thread",
-	"category" : {
-	    "id": 3
-    }
 }
 ```
 
@@ -116,18 +113,15 @@ Server returns:
 
 **POST reply**
 
-Endpoint: `/replies`
+Endpoint: `/threads/{threadId}/replies`
 
-Example URL: `http://localhost:8080/web-forum/api/replies`
+Example URL: `http://localhost:8080/web-forum/api/threads/67/replies`
 
 Example body of the call:
 
 ```json
 {
-	"comment" : "A comment for a thread",
-	"thread" : {
-	    "id": 67
-	}
+	"comment" : "A comment of a reply for a thread",
 }
 ```
 
