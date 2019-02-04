@@ -18,9 +18,9 @@ public class ReplyDAOImpl implements ReplyDAO {
 		
 		Session currentSession = sessionFactory.getCurrentSession();
 		
-		int result = (int) currentSession.save(reply);
+		int replyId = (int) currentSession.save(reply);
 		
-		return result;
+		return replyId;
 	}
 
 	@Override
