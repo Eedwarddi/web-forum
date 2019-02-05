@@ -1,7 +1,10 @@
 package forum.dao;
 
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -33,4 +36,18 @@ public class ReplyDAOImpl implements ReplyDAO {
 		return reply;
 	}
 
+	@Override
+	public List<Reply> getRepliesForThread(int threadId) {
+		
+		Session currentSession = sessionFactory.getCurrentSession();
+		
+		Query<Reply> theQuery = currentSession.createQuery("from Reply where thread_id=:threadId", Reply.class);
+		
+		theQuery.setParameter("threadId", threadId);
+		
+		List<Reply> replies = theQuery.getResultList();
+
+		return replies;
+	}
+	
 }

@@ -1,5 +1,7 @@
 package forum.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,6 +24,13 @@ public class ReplyServiceImpl implements ReplyService {
 		Reply savedReply = replyDAO.getReply(replyId);
 		
 		return savedReply;
+	}
+
+	@Override
+	@Transactional
+	public List<Reply> getRepliesForThread(int threadId) {
+
+		return replyDAO.getRepliesForThread(threadId);
 	}
 
 }

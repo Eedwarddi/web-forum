@@ -128,6 +128,7 @@ Example body of the call:
 Server returns:
 
 ```json
+
 {
     "id": 4,
     "comment": "A comment for a thread",
@@ -141,4 +142,44 @@ Server returns:
         }
     }
 }
+```
+
+**GET replies for a thread**
+
+Endpoint: `/threads/{threadId}/replies`
+
+Example URL: `http://localhost:8080/web-forum/api/threads/67/replies`
+
+Server returns:
+
+```json
+
+[
+    {
+        "id": 2,
+        "comment": "This is a comment of the reply",
+        "thread": {
+            "id": 67,
+            "title": "This a title for a thread",
+            "content": "Content of the thread",
+            "category": {
+                "id": 3,
+                "title": "Video Games"
+            }
+        }
+    },
+    {
+        "id": 3,
+        "comment": "Another comment of a reply",
+        "thread": {
+            "id": 67,
+            "title": "This a title for a thread",
+            "content": "Content of the thread",
+            "category": {
+                "id": 3,
+                "title": "Video Games"
+            }
+        }
+    }
+]
 ```

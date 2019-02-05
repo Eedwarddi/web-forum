@@ -1,8 +1,11 @@
 package forum.rest;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -41,5 +44,17 @@ public class ReplyRestController {
 		
 	}
 	
+	@GetMapping("/threads/{threadId}/replies")
+	public List<Reply> getRepliesForThread(@PathVariable int threadId) {
+		
+		Thread thread = threadService.getThread(threadId);
+
+		if (thread == null) {
+			throw new ForumItemNotFoundException("Thread id not found - " + threadId);
+		}
+		
+		return replyService.getRepliesForThread(threadId);
+		
+	}
 
 }
