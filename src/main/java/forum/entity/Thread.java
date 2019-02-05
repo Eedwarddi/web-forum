@@ -10,31 +10,29 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-
 @Entity
-@Table(name="thread")
+@Table(name = "thread")
 public class Thread {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id")
+	@Column(name = "id")
 	private int id;
-	
-	@NotNull(message="Title is required!")
-	@Column(name="title")
+
+	@NotNull(message = "Title is required!")
+	@Column(name = "title")
 	private String title;
-	
-	@NotNull(message="Content is required!")
-	@Column(name="content")
+
+	@NotNull(message = "Content is required!")
+	@Column(name = "content")
 	private String content;
-	
-	@NotNull
+
 	@ManyToOne
-	@JoinColumn(name="category_id")
+	@JoinColumn(name = "category_id")
 	private Category category;
-	
+
 	public Thread() {
-		
+
 	}
 
 	public Thread(int id, String title, String content) {
@@ -51,27 +49,25 @@ public class Thread {
 		this.id = id;
 	}
 
-
 	public String getTitle() {
 		return title;
 	}
-	
+
 	public String getContent() {
 		return content;
 	}
-	
+
 	public Category getCategory() {
 		return category;
 	}
-	
+
 	public void setCategory(Category category) {
 		this.category = category;
 	}
-	
 
 	@Override
 	public String toString() {
 		return "Thread [id=" + id + ", title=" + title + ", category=" + category + "]";
 	}
-	
+
 }

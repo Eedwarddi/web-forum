@@ -29,9 +29,17 @@ public class ThreadRestController {
 	@Autowired
 	private CategoryService categoryService;
 
-	@PostMapping("/threads")
-	public Thread addThread(@Valid @RequestBody Thread theThread) {
+	@PostMapping("categories/{categoryId}/threads")
+	public Thread addThread(@Valid @RequestBody Thread theThread, @PathVariable int categoryId) {
+		
+		Category category = categoryService.getCategory(categoryId);
 
+		if (category == null) {
+			throw new ForumItemNotFoundException("Category id not found - " + categoryId);
+		}
+		
+		theThread.setCategory(category);
+		
 		Thread savedThread = threadService.saveThread(theThread);
 
 		return savedThread;
