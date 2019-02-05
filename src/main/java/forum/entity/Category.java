@@ -1,14 +1,10 @@
 package forum.entity;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -22,9 +18,6 @@ public class Category {
 
 	@Column(name = "title")
 	private String title;
-
-	@OneToMany(mappedBy = "category")
-	private List<Thread> threads;
 
 	public Category() {
 
@@ -50,17 +43,6 @@ public class Category {
 	@Override
 	public String toString() {
 		return "Category [id=" + id + ", title=" + title + "]";
-	}
-
-	public void add(Thread tempThread) {
-
-		if (threads == null) {
-			threads = new ArrayList<>();
-		}
-
-		threads.add(tempThread);
-
-		tempThread.setCategory(this);
 	}
 
 }

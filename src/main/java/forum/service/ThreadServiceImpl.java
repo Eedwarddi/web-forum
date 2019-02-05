@@ -7,26 +7,17 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import forum.dao.ThreadDAO;
-import forum.entity.Category;
 import forum.entity.Thread;
-import forum.rest.CategoryRestController;
 
 @Service
 public class ThreadServiceImpl implements ThreadService {
 	
 	@Autowired
 	private ThreadDAO threadDAO;
-	
-	@Autowired
-	private CategoryService categoryService;
 
 	@Override
 	@Transactional
 	public Thread saveThread(Thread thread) {
-		
-		Category tempCategory = categoryService.getCategory(thread.getCategory().getId());
-		
-		tempCategory.add(thread);
 		
 		int threadId = threadDAO.saveThread(thread);
 		
@@ -43,6 +34,7 @@ public class ThreadServiceImpl implements ThreadService {
 	}
 
 	@Override
+	@Transactional
 	public Thread getThread(int id) {
 		return threadDAO.getThread(id);
 	}

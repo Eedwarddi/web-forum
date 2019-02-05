@@ -1,8 +1,5 @@
 package forum.entity;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,7 +7,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -34,9 +30,6 @@ public class Thread {
 	@ManyToOne
 	@JoinColumn(name = "category_id")
 	private Category category;
-
-	@OneToMany(mappedBy = "thread")
-	private List<Reply> replies;
 
 	public Thread() {
 
@@ -70,17 +63,6 @@ public class Thread {
 
 	public void setCategory(Category category) {
 		this.category = category;
-	}
-
-	public void add(Reply tempReply) {
-
-		if (replies == null) {
-			replies = new ArrayList<>();
-		}
-
-		replies.add(tempReply);
-
-		tempReply.setThread(this);
 	}
 
 	@Override
